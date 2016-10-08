@@ -7,8 +7,11 @@ from utils import *
 
 class Cell:
     """A cellular automaton cell able to hold an arbitrary number of states."""
-    def __init__(self, begin_state=0):
-        """Initialise cell. If an argument is given, set cell's state to it."""
+
+    def __init__(self, begin_state):
+        """Initialise cell with the given state."""
+        # TODO: should I take begin_state? *cannot* have a default value, would
+        #       be assuming info about the ruleset
         self.set_state(begin_state)
 
     def set_state(self, state):
