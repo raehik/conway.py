@@ -66,14 +66,18 @@ class Board:
         #       method, use a more strict board setter)
         state = "".join(boardstr.split()) # remove all whitespace
         for cell_index in range(len(self.board)):
-            self.board[cell_index].set_state(int(state[cell_index]))
+            try:
+                self.board[cell_index].set_state(int(state[cell_index]))
+            except IndexError:
+                logging.error("IndexError in set_board() - boardstring is likely not formatted correctly")
+                sys.exit(1)
 
     def print_board(self):
         count = 0
         for cell in self.board:
             print(str(cell.get_state()) + " ", end="")
             count += 1
-            if count == 5:
+            if count == self.x:
                 count = 0
                 print()
 
